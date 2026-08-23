@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Hungry Table | Chef Jermaine</title>
+
+  <meta name="description"
+        content="The Hungry Table by Chef Jermaine. Homemade seafood, breakfast, pasta, soul food and comfort meals.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #090909;
+      color: white;
+      line-height: 1.6;
+    }
+
+    :root {
+      --gold: #d9a441;
+      --lightGold: #ffd875;
+      --dark: #090909;
+      --card: #151515;
+      --card2: #1d1d1d;
+    }
+
+    /* ENTER SCREEN */
+
+    #enterScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.88)),
+        url("chef.jpg") center/cover no-repeat;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 25px;
+    }
+
+    .enter-box {
+      max-width: 700px;
+      background: rgba(0,0,0,.58);
+      padding: 35px 25px;
+      border: 1px solid var(--gold);
+      border-radius: 22px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 35px rgba(217,164,65,.3);
+    }
+
+    .enter-box h1 {
+      color: var(--lightGold);
+      font-family: Georgia, serif;
+      font-size: clamp(40px, 10vw, 78px);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .enter-box h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .enter-box p {
+      color: #ddd;
+      margin-bottom: 24px;
+    }
+
+    .enter-btn {
+      border: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      background: var(--gold);
+      color: #111;
+      font-weight: bold;
+      font-size: 17px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(217,164,65,.5);
+      animation: pulse 1.1s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(217,164,65,.5);
+      }
+
+      50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 30px rgba(255,216,117,.9);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(217,164,65,.5);
+      }
+    }
+
+    /* MUSIC */
+
+    #musicFrame {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* NAV */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,.94);
+      border-bottom: 1px solid #333;
+      padding: 12px 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--lightGold);
+      font-family: Georgia, serif;
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 18px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--lightGold);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 92vh;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.90) 0%,
+          rgba(0,0,0,.55) 45%,
+          rgba(0,0,0,.25) 100%
+        ),
+        url("chef.jpg") center/cover no-repeat;
+
+      display: flex;
+      align-items: center;
+      padding: 50px 8%;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .small-title {
+      color: var(--lightGold);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, serif;
+      font-size: clamp(55px, 9vw, 105px);
+      color: var(--lightGold);
+      line-height: .95;
+    }
+
+    .hero h2 {
+      font-size: clamp(27px, 5vw, 46px);
+      margin: 15px 0;
+    }
+
+    .hero p {
+      max-width: 580px;
+      color: #e4e4e4;
+      font-size: 17px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      text-decoration: none;
+      display: inline-block;
+      padding: 13px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #111;
+    }
+
+    .btn-outline {
+      border: 1px solid white;
+      color: white;
+    }
+
+    /* GENERAL */
+
+    section {
+      padding: 75px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title span {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+    }
+
+    .section-title h2 {
+      font-family: Georgia, serif;
+      color: var(--lightGold);
+      font-size: clamp(34px, 7vw, 55px);
+      margin-top: 4px;
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 10px auto 0;
+      color: #aaa;
+    }
+
+    /* CHEF STORY */
+
+    .about {
+      background: #111;
+    }
+
+    .about-wrap {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 2px solid var(--gold);
+    }
+
+    .about h2 {
+      color: var(--lightGold);
+      font-family: Georgia, serif;
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .about p {
+      color: #ccc;
+      margin-bottom: 14px;
+    }
+
+    /* FEATURED DISHES */
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    .food-card {
+      background: var(--card);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #282828;
+      transition: .3s;
+    }
+
+    .food-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--gold);
+      box-shadow: 0 15px 35px rgba(0,0,0,.5);
+    }
+
+    .food-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .food-info {
+      padding: 20px;
+    }
+
+    .food-info h3 {
+      color: var(--lightGold);
+      font-family: Georgia, serif;
+      font-size: 24px;
+      margin-bottom: 7px;
+    }
+
+    .food-info p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .price {
+      display: inline-block;
+      margin-top: 13px;
+      color: var(--gold);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* MENU */
+
+    .menu-section {
+      background: #101010;
+    }
+
+    .menu-wrap {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .menu-box {
+      background: #181818;
+      border: 1px solid #2a2a2a;
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .menu-box h3 {
+      font-family: Georgia, serif;
+      color: var(--lightGold);
+      font-size: 29px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+    }
+
+    .menu-item {
+      margin-bottom: 20px;
+    }
+
+    .menu-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: white;
+      font-weight: bold;
+    }
+
+    .menu-item p {
+      color: #999;
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    .menu-price {
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact-card {
+      max-width: 720px;
+      margin: auto;
+      background: var(--card);
+      border: 1px solid #333;
+      border-radius: 20px;
+      padding: 35px;
+    }
+
+    .contact-card h3 {
+      color: var(--lightGold);
+      font-size: 30px;
+      font-family: Georgia, serif;
+    }
+
+    .contact-card p {
+      color: #bbb;
+      margin: 10px 0;
+    }
+
+    .contact-link {
+      color: var(--lightGold);
+      text-decoration: none;
+    }
+
+    /* CHAT */
+
+    .chat-button {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: none;
+      background: var(--gold);
+      color: #111;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 5000;
+      box-shadow: 0 5px 25px rgba(0,0,0,.7);
+    }
+
+    .chat-box {
+      display: none;
+      position: fixed;
+      right: 18px;
+      bottom: 95px;
+      width: min(360px, calc(100vw - 36px));
+      height: 470px;
+      background: #111;
+      border: 1px solid var(--gold);
+      border-radius: 18px;
+      overflow: hidden;
+      z-index: 5000;
+      box-shadow: 0 15px 50px rgba(0,0,0,.8);
+    }
+
+    .chat-header {
+      background: var(--gold);
+      color: #111;
+      padding: 15px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-header button {
+      border: none;
+      background: transparent;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .messages {
+      height: 350px;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 10px 13px;
+      margin-bottom: 10px;
+      border-radius: 14px;
+      font-size: 14px;
+    }
+
+    .bot {
+      background: #2a2a2a;
+      color: white;
+    }
+
+    .user {
+      background: var(--gold);
+      color: #111;
+      margin-left: auto;
+    }
+
+    .chat-input {
+      border-top: 1px solid #333;
+      padding: 10px;
+      display: flex;
+    }
+
+    .chat-input input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: #222;
+      color: white;
+      padding: 12px;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .chat-input button {
+      border: none;
+      background: var(--gold);
+      padding: 0 16px;
+      font-weight: bold;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #050505;
+      border-top: 1px solid #292929;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer h2 {
+      color: var(--lightGold);
+      font-family: Georgia, serif;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      color: #888;
+      font-size: 14px;
+    }
+
+    .professor {
+      margin-top: 25px;
+      border-top: 1px solid #333;
+      padding-top: 25px;
+      color: #ddd;
+    }
+
+    .professor strong {
+      color: var(--lightGold);
+    }
+
+    @media(max-width: 900px) {
+      .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width: 620px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        min-height: 88vh;
+        background-position: 58% center;
+        padding: 45px 25px;
+        align-items: end;
+      }
+
+      .hero-content {
+        background: rgba(0,0,0,.55);
+        padding: 22px;
+        border-radius: 18px;
+      }
+
+      .food-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .food-card img {
+        height: 260px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- MUSIC PLAYER -->
+<iframe
+  id="musicFrame"
+  allow="autoplay"
+  title="The Hungry Table Music">
+</iframe>
+
+
+<!-- ENTER SCREEN -->
+
+<div id="enterScreen">
+
+  <div class="enter-box">
+
+    <h1>The Hungry Table</h1>
+
+    <h2>Featuring Chef Jermaine</h2>
+
+    <p>
+      Homemade food. Big flavor. Made from the heart.
+    </p>
+
+    <button class="enter-btn" onclick="enterRestaurant()">
+      🍽 Enter The Hungry Table
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- NAV -->
+
+<nav>
+
+  <div class="logo">
+    THE HUNGRY TABLE
+  </div>
+
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#chef">Chef</a></li>
+    <li><a href="#plates">Featured</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+
+  <div class="hero-content">
+
+    <div class="small-title">
+      Homemade With Love
+    </div>
+
+    <h1>The Hungry Table</h1>
+
+    <h2>Chef Jermaine</h2>
+
+    <p>
+      Welcome to The Hungry Table, where homemade comfort food,
+      seafood, breakfast favorites and soulful dishes come together.
+      Every plate is made with flavor, heart and a little creativity.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#menu" class="btn btn-gold">
+        View The Menu
+      </a>
+
+      <a href="#plates" class="btn btn-outline">
+        See My Plates
+      </a>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="chef">
+
+  <div class="about-wrap">
+
+    <img src="chef.jpg" alt="Chef Jermaine">
+
+    <div>
+
+      <div class="small-title">
+        Meet The Chef
+      </div>
+
+      <h2>Chef Jermaine</h2>
+
+      <p>
+        The Hungry Table is all about good homemade meals,
+        generous portions and food that brings people together.
+      </p>
+
+      <p>
+        From seafood and grits to steaks, breakfast dishes,
+        pasta and slow-cooked comfort food, Chef Jermaine
+        combines familiar favorites with his own style.
+      </p>
+
+      <p>
+        Pull up a chair. There's always a seat waiting
+        at The Hungry Table.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FEATURED PLATES -->
+
+<section id="plates">
+
+  <div class="section-title">
+
+    <span>From My Kitchen</span>
+
+    <h2>Chef Jermaine's Plates</h2>
+
+    <p>
+      Homemade dishes prepared with bold seasoning and plenty of flavor.
+    </p>
+
+  </div>
+
+
+  <div class="food-grid">
+
+    <article class="food-card">
+
+      <img src="fish-grits.jpg" alt="Fish shrimp and grits">
+
+      <div class="food-info">
+
+        <h3>Jermaine's Coastal Grits</h3>
+
+        <p>
+          Seasoned fish and sautéed shrimp served over creamy,
+          buttery Southern-style grits.
+        </p>
+
+        <span class="price">$18</span>
+
+      </div>
+
+    </article>
+
+
+    <article class="food-card">
+
+      <img src="tuna-cakes.jpg" alt="Tuna cakes">
+
+      <div class="food-info">
+
+        <h3>Hungry Table Tuna Cakes</h3>
+
+        <p>
+          Crispy homemade tuna cakes filled with onion,
+          herbs and Chef Jermaine's signature seasoning.
+        </p>
+
+        <span class="price">$13</span>
+
+      </div>
+
+    </article>
+
+
+    <article class="food-card">
+
+      <img src="steak-breakfast.jpg" alt="Steak eggs and hash browns">
+
+      <div class="food-info">
+
+        <h3>The Jermaine Breakfast</h3>
+
+        <p>
+          Pan-seared steak, two sunny-side eggs and crispy
+          golden hash browns.
+        </p>
+
+        <span class="price">$19</span>
+
+      </div>
+
+    </article>
+
+
+    <article class="food-card">
+
+      <img src="seafood-rice.jpg" alt="Salmon shrimp broccoli and rice">
+
+      <div class="food-info">
+
+        <h3>Golden Coast Seafood Plate</h3>
+
+        <p>
+          Seasoned salmon, buttery shrimp, broccoli
+          and golden seasoned rice.
+        </p>
+
+        <span class="price">$21</span>
+
+      </div>
+
+    </article>
+
+
+    <article class="food-card">
+
+      <img src="salmon-mac.jpg" alt="Salmon avocado and macaroni">
+
+      <div class="food-info">
+
+        <h3>Backyard Salmon Comfort Plate</h3>
+
+        <p>
+          Seared salmon served with creamy baked macaroni
+          and fresh avocado.
+        </p>
+
+        <span class="price">$19</span>
+
+      </div>
+
+    </article>
+
+
+    <article class="food-card">
+
+      <img src="loaded-shrimp.jpg" alt="Loaded shrimp dish">
+
+      <div class="food-info">
+
+        <h3>Loaded Bayou Shrimp Bake</h3>
+
+        <p>
+          Seasoned shrimp over melted cheese with crispy bacon
+          and fresh green onions.
+        </p>
+
+        <span class="price">$18</span>
+
+      </div>
+
+    </article>
+
+
+    <article class="food-card">
+
+      <img src="salmon-shrimp.jpg" alt="Salmon and shrimp">
+
+      <div class="food-info">
+
+        <h3>Chef J's Seafood Special</h3>
+
+        <p>
+          Perfectly seasoned salmon and shrimp served
+          Hungry Table style.
+        </p>
+
+        <span class="price">$20</span>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- FULL MENU -->
+
+<section class="menu-section" id="menu">
+
+  <div class="section-title">
+
+    <span>Something For Everybody</span>
+
+    <h2>The Hungry Table Menu</h2>
+
+    <p>
+      Seafood, comfort food, breakfast and homemade favorites.
+    </p>
+
+  </div>
+
+
+  <div class="menu-wrap">
+
+
+    <!-- SIGNATURE -->
+
+    <div class="menu-box">
+
+      <h3>🔥 Chef Jermaine's Favorites</h3>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Jermaine's Coastal Fish & Grits</span>
+          <span class="menu-price">$18</span>
+        </div>
+
+        <p>
+          Blackened fish, seasoned shrimp and creamy grits.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Golden Coast Seafood Plate</span>
+          <span class="menu-price">$21</span>
+        </div>
+
+        <p>
+          Salmon, shrimp, broccoli and seasoned yellow rice.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Hungry Table Tuna Cakes</span>
+          <span class="menu-price">$13</span>
+        </div>
+
+        <p>
+          Crispy homemade tuna cakes with Chef J's seasoning.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Loaded Bayou Shrimp Bake</span>
+          <span class="menu-price">$18</span>
+        </div>
+
+        <p>
+          Shrimp, melted cheese, bacon and green onions.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Sunday Short Ribs</span>
+          <span class="menu-price">$22</span>
+        </div>
+
+        <p>
+          Slow-braised beef short ribs served tender and full of flavor.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- PASTA -->
+
+    <div class="menu-box">
+
+      <h3>🍝 Homemade Pasta</h3>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Cajun Shrimp Alfredo</span>
+          <span class="menu-price">$17</span>
+        </div>
+
+        <p>
+          Seasoned shrimp tossed in creamy Cajun Alfredo sauce.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Blackened Chicken Alfredo</span>
+          <span class="menu-price">$16</span>
+        </div>
+
+        <p>
+          Blackened chicken with creamy homemade Alfredo.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Salmon Alfredo</span>
+          <span class="menu-price">$19</span>
+        </div>
+
+        <p>
+          Seasoned salmon over rich creamy pasta.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Hungry Table Seafood Pasta</span>
+          <span class="menu-price">$22</span>
+        </div>
+
+        <p>
+          Salmon and shrimp tossed in Chef Jermaine's creamy sauce.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Chicken Bacon Mac</span>
+          <span class="menu-price">$16</span>
+        </div>
+
+        <p>
+          Creamy macaroni loaded with chicken and crispy bacon.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- BREAKFAST -->
+
+    <div class="menu-box">
+
+      <h3>🍳 Breakfast Table</h3>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>The Jermaine Breakfast</span>
+          <span class="menu-price">$19</span>
+        </div>
+
+        <p>
+          Steak, two eggs and crispy hash browns.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Hungry Man Breakfast</span>
+          <span class="menu-price">$15</span>
+        </div>
+
+        <p>
+          Eggs, bacon, sausage, hash browns and toast.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Shrimp & Grits Breakfast Bowl</span>
+          <span class="menu-price">$16</span>
+        </div>
+
+        <p>
+          Buttery grits topped with seasoned shrimp and eggs.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Chicken & Waffles</span>
+          <span class="menu-price">$16</span>
+        </div>
+
+        <p>
+          Crispy chicken with golden waffles and syrup.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Steak & Cheese Omelet</span>
+          <span class="menu-price">$15</span>
+        </div>
+
+        <p>
+          Eggs loaded with steak, peppers, onions and cheese.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- DINNER -->
+
+    <div class="menu-box">
+
+      <h3>🍽 Homemade Dinner</h3>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Sunday Short Rib Dinner</span>
+          <span class="menu-price">$22</span>
+        </div>
+
+        <p>
+          Slow-cooked beef short ribs with two homemade sides.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Garlic Butter Salmon</span>
+          <span class="menu-price">$19</span>
+        </div>
+
+        <p>
+          Pan-seared salmon finished with garlic herb butter.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Smothered Chicken Dinner</span>
+          <span class="menu-price">$16</span>
+        </div>
+
+        <p>
+          Seasoned chicken covered in homemade gravy.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Country Fried Pork Chops</span>
+          <span class="menu-price">$17</span>
+        </div>
+
+        <p>
+          Crispy seasoned pork chops with two sides.
+        </p>
+
+      </div>
+
+
+      <div class="menu-item">
+
+        <div class="menu-top">
+          <span>Chef J's Steak Dinner</span>
+          <span class="menu-price">$23</span>
+        </div>
+
+        <p>
+          Seasoned steak cooked to order with two homemade sides.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- SIDES -->
+
+    <div class="menu-box">
+
+      <h3>🥘 Homemade Sides</h3>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Baked Mac & Cheese</span>
+          <span class="menu-price">$5</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Seasoned Yellow Rice</span>
+          <span class="menu-price">$4</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Creamy Grits</span>
+          <span class="menu-price">$4</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Garlic Broccoli</span>
+          <span class="menu-price">$4</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Collard Greens</span>
+          <span class="menu-price">$5</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Mashed Potatoes & Gravy</span>
+          <span class="menu-price">$5</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Southern Green Beans</span>
+          <span class="menu-price">$4</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Golden Hash Browns</span>
+          <span class="menu-price">$4</span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ADD ONS -->
+
+    <div class="menu-box">
+
+      <h3>➕ Add Something Extra</h3>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Seasoned Shrimp</span>
+          <span class="menu-price">$7</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Salmon Fillet</span>
+          <span class="menu-price">$9</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Grilled Chicken</span>
+          <span class="menu-price">$6</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Avocado</span>
+          <span class="menu-price">$3</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Extra Bacon</span>
+          <span class="menu-price">$3</span>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-top">
+          <span>Extra Egg</span>
+          <span class="menu-price">$2</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+  <div class="section-title">
+
+    <span>Get In Touch</span>
+
+    <h2>Contact The Hungry Table</h2>
+
+  </div>
+
+
+  <div class="contact-card">
+
+    <h3>Chef Jermaine</h3>
+
+    <p>
+      Questions, meal inquiries or special requests?
+    </p>
+
+    <!-- CHANGE THESE TO YOUR REAL INFORMATION -->
+
+    <p>
+      📞 Phone:
+      <a class="contact-link" href="tel:7575551234">
+        (757) 555-1234
+      </a>
+    </p>
+
+    <p>
+      ✉️ Email:
+      <a class="contact-link" href="mailto:yourname@email.com">
+        yourname@email.com
+      </a>
+    </p>
+
+    <p>
+      📍 Hampton Roads, Virginia
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CHAT BUTTON -->
+
+<button
+  class="chat-button"
+  onclick="toggleChat()"
+  aria-label="Open chat">
+  💬
+</button>
+
+
+<!-- CHAT BOX -->
+
+<div class="chat-box" id="chatBox">
+
+  <div class="chat-header">
+
+    <span>🍽 Hungry Table Chat</span>
+
+    <button onclick="toggleChat()">✕</button>
+
+  </div>
+
+
+  <div class="messages" id="messages">
+
+    <div class="message bot">
+      Welcome to The Hungry Table! 👨🏾‍🍳
+      I'm Chef Jermaine's virtual assistant.
+      Ask me about the menu, seafood, breakfast,
+      pasta or today's specials.
+    </div>
+
+  </div>
+
+
+  <div class="chat-input">
+
+    <input
+      id="chatInput"
+      type="text"
+      placeholder="Type your message..."
+      onkeydown="if(event.key === 'Enter') sendMessage()">
+
+    <button onclick="sendMessage()">
+      Send
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h2>The Hungry Table</h2>
+
+  <p>
+    Homemade Food • Big Flavor • Chef Jermaine
+  </p>
+
+  <div class="professor">
+
+    Special thanks to
+    <strong>Professor Meeks</strong>
+    for being a great teacher and for the guidance
+    provided throughout Project Management.
+
+  </div>
+
+  <p style="margin-top:25px;">
+    © 2026 The Hungry Table | Chef Jermaine
+  </p>
+
+</footer>
+
+
+<script>
+
+  /* ENTER SITE + START YOUTUBE MUSIC */
+
+  function enterRestaurant() {
+
+    const screen = document.getElementById("enterScreen");
+    const music = document.getElementById("musicFrame");
+
+    music.src =
+      "https://www.youtube.com/embed/-bBzIgIaPS4?autoplay=1&loop=1&playlist=-bBzIgIaPS4";
+
+    screen.style.transition = "opacity .7s ease";
+    screen.style.opacity = "0";
+
+    setTimeout(() => {
+      screen.style.display = "none";
+    }, 700);
+
+  }
+
+
+  /* CHAT */
+
+  function toggleChat() {
+
+    const box = document.getElementById("chatBox");
+
+    if (box.style.display === "block") {
+      box.style.display = "none";
+    } else {
+      box.style.display = "block";
+    }
+
+  }
+
+
+  function sendMessage() {
+
+    const input = document.getElementById("chatInput");
+    const messages = document.getElementById("messages");
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+
+    const userMessage = document.createElement("div");
+
+    userMessage.className = "message user";
+    userMessage.textContent = text;
+
+    messages.appendChild(userMessage);
+
+
+    input.value = "";
+
+
+    setTimeout(() => {
+
+      const botMessage = document.createElement("div");
+
+      botMessage.className = "message bot";
+
+      botMessage.textContent = getResponse(text);
+
+      messages.appendChild(botMessage);
+
+      messages.scrollTop = messages.scrollHeight;
+
+    }, 450);
+
+
+    messages.scrollTop = messages.scrollHeight;
+
+  }
+
+
+  function getResponse(message) {
+
+    const msg = message.toLowerCase();
+
+
+    if (
+      msg.includes("hello") ||
+      msg.includes("hey") ||
+      msg.includes("hi")
+    ) {
+
+      return "Welcome to The Hungry Table! What can I help you find today?";
+
+    }
+
+
+    if (
+      msg.includes("shrimp") ||
+      msg.includes("seafood")
+    ) {
+
+      return "Seafood favorites include Jermaine's Coastal Fish & Grits, the Golden Coast Seafood Plate, Loaded Bayou Shrimp Bake and Seafood Pasta.";
+
+    }
+
+
+    if (
+      msg.includes("grits")
+    ) {
+
+      return "Jermaine's Coastal Fish & Grits comes with seasoned fish, sautéed shrimp and creamy homemade grits.";
+
+    }
+
+
+    if (
+      msg.includes("tuna") ||
+      msg.includes("cake")
+    ) {
+
+      return "The Hungry Table Tuna Cakes are crispy homemade tuna patties seasoned with onions, herbs and Chef Jermaine's signature flavor.";
+
+    }
+
+
+    if (
+      msg.includes("breakfast") ||
+      msg.includes("egg")
+    ) {
+
+      return "Breakfast favorites include The Jermaine Breakfast, Hungry Man Breakfast, Shrimp & Grits Breakfast Bowl, Chicken & Waffles and the Steak & Cheese Omelet.";
+
+    }
+
+
+    if (
+      msg.includes("pasta") ||
+      msg.includes("alfredo")
+    ) {
+
+      return "Our pasta menu includes Cajun Shrimp Alfredo, Blackened Chicken Alfredo, Salmon Alfredo and The Hungry Table Seafood Pasta.";
+
+    }
+
+
+    if (
+      msg.includes("short rib") ||
+      msg.includes("ribs")
+    ) {
+
+      return "The Sunday Short Rib Dinner features slow-cooked tender beef short ribs with your choice of two homemade sides.";
+
+    }
+
+
+    if (
+      msg.includes("side")
+    ) {
+
+      return "Sides include baked mac & cheese, yellow rice, creamy grits, broccoli, collard greens, mashed potatoes, green beans and hash browns.";
+
+    }
+
+
+    if (
+      msg.includes("contact") ||
+      msg.includes("phone") ||
+      msg.includes("order")
+    ) {
+
+      return "Scroll to the Contact section to reach Chef Jermaine about meal inquiries and special requests.";
+
+    }
+
+
+    if (
+      msg.includes("price") ||
+      msg.includes("cost")
+    ) {
+
+      return "Prices are listed beside each item on The Hungry Table menu. Scroll up to see the full menu.";
+
+    }
+
+
+    return "Thanks for asking! I can help you with seafood, tuna cakes, fish & grits, breakfast, pasta, short ribs, sides or contact information.";
+
+  }
+
+</script>
+
+</body>
+</html>
