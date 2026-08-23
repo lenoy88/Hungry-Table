@@ -32,17 +32,17 @@
       --lightGold: #ffd875;
       --dark: #090909;
       --card: #151515;
-      --card2: #1d1d1d;
     }
 
-    /* ENTER SCREEN */
+    /* OPENING SCREEN */
 
     #enterScreen {
       position: fixed;
       inset: 0;
       z-index: 99999;
+
       background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.88)),
+        linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.88)),
         url("chef.jpg") center/cover no-repeat;
 
       display: flex;
@@ -54,24 +54,24 @@
 
     .enter-box {
       max-width: 700px;
-      background: rgba(0,0,0,.58);
+      background: rgba(0,0,0,.60);
       padding: 35px 25px;
       border: 1px solid var(--gold);
       border-radius: 22px;
       backdrop-filter: blur(5px);
-      box-shadow: 0 0 35px rgba(217,164,65,.3);
+      box-shadow: 0 0 35px rgba(217,164,65,.30);
     }
 
     .enter-box h1 {
       color: var(--lightGold);
       font-family: Georgia, serif;
-      font-size: clamp(40px, 10vw, 78px);
+      font-size: clamp(42px,10vw,78px);
       line-height: 1;
       margin-bottom: 12px;
     }
 
     .enter-box h2 {
-      font-size: 24px;
+      font-size: 25px;
       margin-bottom: 8px;
     }
 
@@ -89,7 +89,6 @@
       font-weight: bold;
       font-size: 17px;
       cursor: pointer;
-      box-shadow: 0 0 20px rgba(217,164,65,.5);
       animation: pulse 1.1s infinite;
     }
 
@@ -120,13 +119,13 @@
       pointer-events: none;
     }
 
-    /* NAV */
+    /* NAVIGATION */
 
     nav {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(0,0,0,.94);
+      background: rgba(0,0,0,.95);
       border-bottom: 1px solid #333;
       padding: 12px 18px;
 
@@ -167,9 +166,9 @@
       background:
         linear-gradient(
           90deg,
-          rgba(0,0,0,.90) 0%,
-          rgba(0,0,0,.55) 45%,
-          rgba(0,0,0,.25) 100%
+          rgba(0,0,0,.90),
+          rgba(0,0,0,.52),
+          rgba(0,0,0,.20)
         ),
         url("chef.jpg") center/cover no-repeat;
 
@@ -192,13 +191,13 @@
 
     .hero h1 {
       font-family: Georgia, serif;
-      font-size: clamp(55px, 9vw, 105px);
+      font-size: clamp(55px,9vw,105px);
       color: var(--lightGold);
       line-height: .95;
     }
 
     .hero h2 {
-      font-size: clamp(27px, 5vw, 46px);
+      font-size: clamp(27px,5vw,46px);
       margin: 15px 0;
     }
 
@@ -221,7 +220,6 @@
       padding: 13px 25px;
       border-radius: 30px;
       font-weight: bold;
-      cursor: pointer;
     }
 
     .btn-gold {
@@ -234,7 +232,7 @@
       color: white;
     }
 
-    /* GENERAL */
+    /* SECTIONS */
 
     section {
       padding: 75px 7%;
@@ -255,7 +253,7 @@
     .section-title h2 {
       font-family: Georgia, serif;
       color: var(--lightGold);
-      font-size: clamp(34px, 7vw, 55px);
+      font-size: clamp(34px,7vw,55px);
       margin-top: 4px;
     }
 
@@ -265,7 +263,7 @@
       color: #aaa;
     }
 
-    /* CHEF STORY */
+    /* CHEF */
 
     .about {
       background: #111;
@@ -274,6 +272,7 @@
     .about-wrap {
       max-width: 1100px;
       margin: auto;
+
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 45px;
@@ -300,11 +299,11 @@
       margin-bottom: 14px;
     }
 
-    /* FEATURED DISHES */
+    /* FOOD */
 
     .food-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3,1fr);
       gap: 24px;
       max-width: 1250px;
       margin: auto;
@@ -364,8 +363,9 @@
     .menu-wrap {
       max-width: 1150px;
       margin: auto;
+
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2,1fr);
       gap: 25px;
     }
 
@@ -393,7 +393,6 @@
       display: flex;
       justify-content: space-between;
       gap: 15px;
-      color: white;
       font-weight: bold;
     }
 
@@ -425,18 +424,19 @@
 
     .contact-card h3 {
       color: var(--lightGold);
-      font-size: 30px;
+      font-size: 32px;
       font-family: Georgia, serif;
     }
 
     .contact-card p {
       color: #bbb;
-      margin: 10px 0;
+      margin: 13px 0;
     }
 
     .contact-link {
       color: var(--lightGold);
       text-decoration: none;
+      font-weight: bold;
     }
 
     /* CHAT */
@@ -445,30 +445,43 @@
       position: fixed;
       right: 20px;
       bottom: 20px;
+
       width: 64px;
       height: 64px;
+
       border-radius: 50%;
       border: none;
+
       background: var(--gold);
       color: #111;
+
       font-size: 28px;
       cursor: pointer;
+
       z-index: 5000;
+
       box-shadow: 0 5px 25px rgba(0,0,0,.7);
     }
 
     .chat-box {
       display: none;
+
       position: fixed;
       right: 18px;
       bottom: 95px;
-      width: min(360px, calc(100vw - 36px));
+
+      width: min(360px,calc(100vw - 36px));
       height: 470px;
+
       background: #111;
+
       border: 1px solid var(--gold);
       border-radius: 18px;
+
       overflow: hidden;
+
       z-index: 5000;
+
       box-shadow: 0 15px 50px rgba(0,0,0,.8);
     }
 
@@ -477,6 +490,7 @@
       color: #111;
       padding: 15px;
       font-weight: bold;
+
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -524,9 +538,12 @@
       flex: 1;
       border: none;
       outline: none;
+
       background: #222;
       color: white;
+
       padding: 12px;
+
       border-radius: 8px 0 0 8px;
     }
 
@@ -560,7 +577,8 @@
     }
 
     .professor {
-      margin-top: 25px;
+      max-width: 700px;
+      margin: 25px auto 0;
       border-top: 1px solid #333;
       padding-top: 25px;
       color: #ddd;
@@ -570,9 +588,12 @@
       color: var(--lightGold);
     }
 
-    @media(max-width: 900px) {
+    /* MOBILE */
+
+    @media(max-width:900px) {
+
       .food-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2,1fr);
       }
 
       .about-wrap {
@@ -584,7 +605,8 @@
       }
     }
 
-    @media(max-width: 620px) {
+    @media(max-width:620px) {
+
       nav ul {
         display: none;
       }
@@ -597,7 +619,7 @@
       }
 
       .hero-content {
-        background: rgba(0,0,0,.55);
+        background: rgba(0,0,0,.58);
         padding: 22px;
         border-radius: 18px;
       }
@@ -614,13 +636,14 @@
         padding: 60px 20px;
       }
     }
-
   </style>
 </head>
 
+
 <body>
 
-<!-- MUSIC PLAYER -->
+<!-- YOUTUBE MUSIC -->
+
 <iframe
   id="musicFrame"
   allow="autoplay"
@@ -628,7 +651,7 @@
 </iframe>
 
 
-<!-- ENTER SCREEN -->
+<!-- ENTER -->
 
 <div id="enterScreen">
 
@@ -661,16 +684,16 @@
 
   <ul>
     <li><a href="#home">Home</a></li>
-    <li><a href="#chef">Chef</a></li>
-    <li><a href="#plates">Featured</a></li>
-    <li><a href="#menu">Menu</a></li>
+    <li><a href="#chef">Chef Jermaine</a></li>
+    <li><a href="#plates">My Plates</a></li>
+    <li><a href="#menu">Full Menu</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- MAIN HERO -->
 
 <header class="hero" id="home">
 
@@ -682,12 +705,12 @@
 
     <h1>The Hungry Table</h1>
 
-    <h2>Chef Jermaine</h2>
+    <h2>Featuring Chef Jermaine</h2>
 
     <p>
       Welcome to The Hungry Table, where homemade comfort food,
       seafood, breakfast favorites and soulful dishes come together.
-      Every plate is made with flavor, heart and a little creativity.
+      Every plate is made with flavor, heart and creativity.
     </p>
 
     <div class="hero-buttons">
@@ -707,7 +730,7 @@
 </header>
 
 
-<!-- ABOUT -->
+<!-- CHEF JERMAINE -->
 
 <section class="about" id="chef">
 
@@ -746,7 +769,7 @@
 </section>
 
 
-<!-- FEATURED PLATES -->
+<!-- FEATURED FOOD -->
 
 <section id="plates">
 
@@ -757,7 +780,8 @@
     <h2>Chef Jermaine's Plates</h2>
 
     <p>
-      Homemade dishes prepared with bold seasoning and plenty of flavor.
+      Homemade dishes prepared with bold seasoning
+      and plenty of flavor.
     </p>
 
   </div>
@@ -765,17 +789,19 @@
 
   <div class="food-grid">
 
+
     <article class="food-card">
 
-      <img src="fish-grits.jpg" alt="Fish shrimp and grits">
+      <img src="fish-grits.jpg"
+           alt="Fish shrimp and grits">
 
       <div class="food-info">
 
         <h3>Jermaine's Coastal Grits</h3>
 
         <p>
-          Seasoned fish and sautéed shrimp served over creamy,
-          buttery Southern-style grits.
+          Seasoned fish and sautéed shrimp served over
+          creamy buttery Southern-style grits.
         </p>
 
         <span class="price">$18</span>
@@ -787,7 +813,8 @@
 
     <article class="food-card">
 
-      <img src="tuna-cakes.jpg" alt="Tuna cakes">
+      <img src="tuna-cakes.jpg"
+           alt="Homemade tuna cakes">
 
       <div class="food-info">
 
@@ -807,15 +834,16 @@
 
     <article class="food-card">
 
-      <img src="steak-breakfast.jpg" alt="Steak eggs and hash browns">
+      <img src="steak-breakfast.jpg"
+           alt="Steak eggs and hash browns">
 
       <div class="food-info">
 
         <h3>The Jermaine Breakfast</h3>
 
         <p>
-          Pan-seared steak, two sunny-side eggs and crispy
-          golden hash browns.
+          Pan-seared steak, two sunny-side eggs
+          and crispy golden hash browns.
         </p>
 
         <span class="price">$19</span>
@@ -827,15 +855,16 @@
 
     <article class="food-card">
 
-      <img src="seafood-rice.jpg" alt="Salmon shrimp broccoli and rice">
+      <img src="seafood-rice.jpg"
+           alt="Salmon shrimp broccoli and rice">
 
       <div class="food-info">
 
         <h3>Golden Coast Seafood Plate</h3>
 
         <p>
-          Seasoned salmon, buttery shrimp, broccoli
-          and golden seasoned rice.
+          Seasoned salmon, buttery shrimp,
+          broccoli and golden seasoned rice.
         </p>
 
         <span class="price">$21</span>
@@ -847,7 +876,8 @@
 
     <article class="food-card">
 
-      <img src="salmon-mac.jpg" alt="Salmon avocado and macaroni">
+      <img src="salmon-mac.jpg"
+           alt="Salmon avocado and macaroni">
 
       <div class="food-info">
 
@@ -867,15 +897,16 @@
 
     <article class="food-card">
 
-      <img src="loaded-shrimp.jpg" alt="Loaded shrimp dish">
+      <img src="loaded-shrimp.jpg"
+           alt="Loaded shrimp dish">
 
       <div class="food-info">
 
         <h3>Loaded Bayou Shrimp Bake</h3>
 
         <p>
-          Seasoned shrimp over melted cheese with crispy bacon
-          and fresh green onions.
+          Seasoned shrimp over melted cheese with crispy
+          bacon and fresh green onions.
         </p>
 
         <span class="price">$18</span>
@@ -887,15 +918,16 @@
 
     <article class="food-card">
 
-      <img src="salmon-shrimp.jpg" alt="Salmon and shrimp">
+      <img src="salmon-shrimp.jpg"
+           alt="Salmon and shrimp">
 
       <div class="food-info">
 
         <h3>Chef J's Seafood Special</h3>
 
         <p>
-          Perfectly seasoned salmon and shrimp served
-          Hungry Table style.
+          Perfectly seasoned salmon and shrimp
+          served Hungry Table style.
         </p>
 
         <span class="price">$20</span>
@@ -920,7 +952,8 @@
     <h2>The Hungry Table Menu</h2>
 
     <p>
-      Seafood, comfort food, breakfast and homemade favorites.
+      Seafood, comfort food, pasta, breakfast
+      and homemade favorites.
     </p>
 
   </div>
@@ -929,7 +962,7 @@
   <div class="menu-wrap">
 
 
-    <!-- SIGNATURE -->
+    <!-- CHEF FAVORITES -->
 
     <div class="menu-box">
 
@@ -1000,7 +1033,7 @@
         </div>
 
         <p>
-          Slow-braised beef short ribs served tender and full of flavor.
+          Slow-braised beef short ribs with two homemade sides.
         </p>
 
       </div>
@@ -1012,7 +1045,7 @@
 
     <div class="menu-box">
 
-      <h3>🍝 Homemade Pasta</h3>
+      <h3>🍝 Pasta Table</h3>
 
 
       <div class="menu-item">
@@ -1023,7 +1056,7 @@
         </div>
 
         <p>
-          Seasoned shrimp tossed in creamy Cajun Alfredo sauce.
+          Seasoned shrimp tossed in creamy Cajun Alfredo.
         </p>
 
       </div>
@@ -1065,7 +1098,8 @@
         </div>
 
         <p>
-          Salmon and shrimp tossed in Chef Jermaine's creamy sauce.
+          Salmon and shrimp tossed in Chef Jermaine's
+          creamy seafood sauce.
         </p>
 
       </div>
@@ -1158,7 +1192,8 @@
         </div>
 
         <p>
-          Eggs loaded with steak, peppers, onions and cheese.
+          Eggs loaded with steak, peppers,
+          onions and melted cheese.
         </p>
 
       </div>
@@ -1251,12 +1286,14 @@
 
       <h3>🥘 Homemade Sides</h3>
 
+
       <div class="menu-item">
         <div class="menu-top">
           <span>Baked Mac & Cheese</span>
           <span class="menu-price">$5</span>
         </div>
       </div>
+
 
       <div class="menu-item">
         <div class="menu-top">
@@ -1265,12 +1302,14 @@
         </div>
       </div>
 
+
       <div class="menu-item">
         <div class="menu-top">
           <span>Creamy Grits</span>
           <span class="menu-price">$4</span>
         </div>
       </div>
+
 
       <div class="menu-item">
         <div class="menu-top">
@@ -1279,12 +1318,14 @@
         </div>
       </div>
 
+
       <div class="menu-item">
         <div class="menu-top">
           <span>Collard Greens</span>
           <span class="menu-price">$5</span>
         </div>
       </div>
+
 
       <div class="menu-item">
         <div class="menu-top">
@@ -1293,12 +1334,14 @@
         </div>
       </div>
 
+
       <div class="menu-item">
         <div class="menu-top">
           <span>Southern Green Beans</span>
           <span class="menu-price">$4</span>
         </div>
       </div>
+
 
       <div class="menu-item">
         <div class="menu-top">
@@ -1310,11 +1353,12 @@
     </div>
 
 
-    <!-- ADD ONS -->
+    <!-- EXTRAS -->
 
     <div class="menu-box">
 
       <h3>➕ Add Something Extra</h3>
+
 
       <div class="menu-item">
         <div class="menu-top">
@@ -1323,12 +1367,14 @@
         </div>
       </div>
 
+
       <div class="menu-item">
         <div class="menu-top">
           <span>Salmon Fillet</span>
           <span class="menu-price">$9</span>
         </div>
       </div>
+
 
       <div class="menu-item">
         <div class="menu-top">
@@ -1337,6 +1383,7 @@
         </div>
       </div>
 
+
       <div class="menu-item">
         <div class="menu-top">
           <span>Avocado</span>
@@ -1344,12 +1391,14 @@
         </div>
       </div>
 
+
       <div class="menu-item">
         <div class="menu-top">
           <span>Extra Bacon</span>
           <span class="menu-price">$3</span>
         </div>
       </div>
+
 
       <div class="menu-item">
         <div class="menu-top">
@@ -1375,6 +1424,11 @@
 
     <h2>Contact The Hungry Table</h2>
 
+    <p>
+      Contact Chef Jermaine for questions,
+      meal inquiries and special requests.
+    </p>
+
   </div>
 
 
@@ -1383,28 +1437,52 @@
     <h3>Chef Jermaine</h3>
 
     <p>
-      Questions, meal inquiries or special requests?
+      The Hungry Table
     </p>
 
-    <!-- CHANGE THESE TO YOUR REAL INFORMATION -->
 
     <p>
-      📞 Phone:
-      <a class="contact-link" href="tel:7575551234">
-        (757) 555-1234
+      📞 Call or Text:
+      <a
+        class="contact-link"
+        href="tel:+17573670547">
+        757-367-0547
       </a>
     </p>
+
 
     <p>
       ✉️ Email:
-      <a class="contact-link" href="mailto:yourname@email.com">
-        yourname@email.com
+      <a
+        class="contact-link"
+        href="mailto:Jermainerobinson815@gmail.com">
+        Jermainerobinson815@gmail.com
       </a>
     </p>
+
 
     <p>
       📍 Hampton Roads, Virginia
     </p>
+
+
+    <div style="margin-top:25px;">
+
+      <a
+        class="btn btn-gold"
+        href="tel:+17573670547">
+        📞 Call Chef Jermaine
+      </a>
+
+      <br><br>
+
+      <a
+        class="btn btn-outline"
+        href="mailto:Jermainerobinson815@gmail.com">
+        ✉️ Send Email
+      </a>
+
+    </div>
 
   </div>
 
@@ -1416,12 +1494,12 @@
 <button
   class="chat-button"
   onclick="toggleChat()"
-  aria-label="Open chat">
+  aria-label="Open Hungry Table chat">
   💬
 </button>
 
 
-<!-- CHAT BOX -->
+<!-- CHAT -->
 
 <div class="chat-box" id="chatBox">
 
@@ -1437,10 +1515,15 @@
   <div class="messages" id="messages">
 
     <div class="message bot">
+
       Welcome to The Hungry Table! 👨🏾‍🍳
+
       I'm Chef Jermaine's virtual assistant.
-      Ask me about the menu, seafood, breakfast,
-      pasta or today's specials.
+
+      Ask me about seafood, breakfast, pasta,
+      tuna cakes, fish & grits, short ribs,
+      sides or how to contact Chef Jermaine.
+
     </div>
 
   </div>
@@ -1451,7 +1534,7 @@
     <input
       id="chatInput"
       type="text"
-      placeholder="Type your message..."
+      placeholder="Ask The Hungry Table..."
       onkeydown="if(event.key === 'Enter') sendMessage()">
 
     <button onclick="sendMessage()">
@@ -1473,6 +1556,7 @@
     Homemade Food • Big Flavor • Chef Jermaine
   </p>
 
+
   <div class="professor">
 
     Special thanks to
@@ -1481,6 +1565,7 @@
     provided throughout Project Management.
 
   </div>
+
 
   <p style="margin-top:25px;">
     © 2026 The Hungry Table | Chef Jermaine
@@ -1491,85 +1576,139 @@
 
 <script>
 
-  /* ENTER SITE + START YOUTUBE MUSIC */
+  /* OPEN WEBSITE AND PLAY MUSIC */
 
   function enterRestaurant() {
 
-    const screen = document.getElementById("enterScreen");
-    const music = document.getElementById("musicFrame");
+    const screen =
+      document.getElementById("enterScreen");
+
+    const music =
+      document.getElementById("musicFrame");
+
 
     music.src =
       "https://www.youtube.com/embed/-bBzIgIaPS4?autoplay=1&loop=1&playlist=-bBzIgIaPS4";
 
-    screen.style.transition = "opacity .7s ease";
-    screen.style.opacity = "0";
 
-    setTimeout(() => {
-      screen.style.display = "none";
-    }, 700);
+    screen.style.transition =
+      "opacity .7s ease";
+
+    screen.style.opacity =
+      "0";
+
+
+    setTimeout(function() {
+
+      screen.style.display =
+        "none";
+
+    },700);
 
   }
 
 
-  /* CHAT */
+  /* OPEN CHAT */
 
   function toggleChat() {
 
-    const box = document.getElementById("chatBox");
+    const box =
+      document.getElementById("chatBox");
+
 
     if (box.style.display === "block") {
-      box.style.display = "none";
-    } else {
-      box.style.display = "block";
+
+      box.style.display =
+        "none";
+
+    }
+
+    else {
+
+      box.style.display =
+        "block";
+
     }
 
   }
 
 
+  /* SEND CHAT MESSAGE */
+
   function sendMessage() {
 
-    const input = document.getElementById("chatInput");
-    const messages = document.getElementById("messages");
+    const input =
+      document.getElementById("chatInput");
 
-    const text = input.value.trim();
+    const messages =
+      document.getElementById("messages");
 
-    if (!text) return;
-
-
-    const userMessage = document.createElement("div");
-
-    userMessage.className = "message user";
-    userMessage.textContent = text;
-
-    messages.appendChild(userMessage);
+    const text =
+      input.value.trim();
 
 
-    input.value = "";
+    if (!text) {
+      return;
+    }
 
 
-    setTimeout(() => {
-
-      const botMessage = document.createElement("div");
-
-      botMessage.className = "message bot";
-
-      botMessage.textContent = getResponse(text);
-
-      messages.appendChild(botMessage);
-
-      messages.scrollTop = messages.scrollHeight;
-
-    }, 450);
+    const userMessage =
+      document.createElement("div");
 
 
-    messages.scrollTop = messages.scrollHeight;
+    userMessage.className =
+      "message user";
+
+    userMessage.textContent =
+      text;
+
+
+    messages.appendChild(
+      userMessage
+    );
+
+
+    input.value =
+      "";
+
+
+    setTimeout(function() {
+
+      const botMessage =
+        document.createElement("div");
+
+
+      botMessage.className =
+        "message bot";
+
+
+      botMessage.textContent =
+        getResponse(text);
+
+
+      messages.appendChild(
+        botMessage
+      );
+
+
+      messages.scrollTop =
+        messages.scrollHeight;
+
+    },450);
+
+
+    messages.scrollTop =
+      messages.scrollHeight;
 
   }
 
 
+  /* CHAT ANSWERS */
+
   function getResponse(message) {
 
-    const msg = message.toLowerCase();
+    const msg =
+      message.toLowerCase();
 
 
     if (
@@ -1588,7 +1727,7 @@
       msg.includes("seafood")
     ) {
 
-      return "Seafood favorites include Jermaine's Coastal Fish & Grits, the Golden Coast Seafood Plate, Loaded Bayou Shrimp Bake and Seafood Pasta.";
+      return "Seafood favorites include Jermaine's Coastal Fish & Grits, the Golden Coast Seafood Plate, Loaded Bayou Shrimp Bake and Hungry Table Seafood Pasta.";
 
     }
 
@@ -1617,7 +1756,7 @@
       msg.includes("egg")
     ) {
 
-      return "Breakfast favorites include The Jermaine Breakfast, Hungry Man Breakfast, Shrimp & Grits Breakfast Bowl, Chicken & Waffles and the Steak & Cheese Omelet.";
+      return "Breakfast favorites include The Jermaine Breakfast, Hungry Man Breakfast, Shrimp & Grits Breakfast Bowl, Chicken & Waffles and Steak & Cheese Omelet.";
 
     }
 
@@ -1652,12 +1791,21 @@
 
 
     if (
-      msg.includes("contact") ||
       msg.includes("phone") ||
+      msg.includes("contact") ||
       msg.includes("order")
     ) {
 
-      return "Scroll to the Contact section to reach Chef Jermaine about meal inquiries and special requests.";
+      return "You can call or text Chef Jermaine at 757-367-0547 or email Jermainerobinson815@gmail.com.";
+
+    }
+
+
+    if (
+      msg.includes("email")
+    ) {
+
+      return "Chef Jermaine's email is Jermainerobinson815@gmail.com.";
 
     }
 
@@ -1667,12 +1815,12 @@
       msg.includes("cost")
     ) {
 
-      return "Prices are listed beside each item on The Hungry Table menu. Scroll up to see the full menu.";
+      return "Prices are listed beside each item on The Hungry Table menu.";
 
     }
 
 
-    return "Thanks for asking! I can help you with seafood, tuna cakes, fish & grits, breakfast, pasta, short ribs, sides or contact information.";
+    return "Thanks for asking! I can help you with seafood, tuna cakes, fish & grits, breakfast, pasta, short ribs, sides, prices or Chef Jermaine's contact information.";
 
   }
 
